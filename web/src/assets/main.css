@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-image: url(/Users/sergei/Desktop/vue-project/src/assets/image/back.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+}
