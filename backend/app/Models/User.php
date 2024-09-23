@@ -4,9 +4,11 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Achivment;
 {
 
 }
@@ -24,6 +26,13 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'email_verified_at',
+        'phone_number',
+        'user_pic_path',
+        'is_active',
+        'role_id',
+        'level',
+        'balance',
     ];
 
     /**
@@ -47,5 +56,15 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function user_achivments(): HasMany
+    {
+        return $this->hasMany(UserAchivment::class, 'user_id', 'id');
+    }
+
+    public function achivments()
+    {
+        return $this->hasManyThrough(Achivment::class, UserAchivment::class, 'user_id', 'id', 'id', 'achivment_id');
     }
 }

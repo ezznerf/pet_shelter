@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Shelter;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class ShelterController extends Controller
 {
@@ -16,7 +17,8 @@ class ShelterController extends Controller
 //        dd('hello');
 //        $shelters = Shelter::all();
 //        return response()->json($shelters);
-        return Shelter::all();
+        $users = User::with('achivments')->get();
+        return response()->json($users);
     }
 
     /**
