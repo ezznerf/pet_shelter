@@ -14,11 +14,8 @@ class ShelterController extends Controller
      */
     public function index()
     {
-//        dd('hello');
-//        $shelters = Shelter::all();
-//        return response()->json($shelters);
-        $users = User::with('achivments')->get();
-        return response()->json($users);
+        $shelters = Shelter::all();
+        return response()->json($shelters);
     }
 
     /**
@@ -32,9 +29,10 @@ class ShelterController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $shelter)
     {
-        //
+        $shelter = Shelter::where('id', $shelter)->firstOrFail();
+        return response()->json($shelter);
     }
 
     /**
