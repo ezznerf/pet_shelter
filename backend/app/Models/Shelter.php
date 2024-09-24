@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Shelter extends Model
 {
@@ -15,4 +16,14 @@ class Shelter extends Model
         'location',
         'phone_number',
     ];
+
+    public function pets(): HasMany
+    {
+        return $this->hasMany(Pets::class, 'shelter_id', 'id');
+    }
+
+    public function photos()
+    {
+        return $this->hasManyThrough(Pets::class, Photos::class, 'pet_id', 'id', 'id');
+    }
 }

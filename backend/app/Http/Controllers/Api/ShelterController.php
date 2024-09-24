@@ -14,7 +14,7 @@ class ShelterController extends Controller
      */
     public function index()
     {
-        $shelters = Shelter::all();
+        $shelters = Shelter::with(['pets.photos'])->get();
         return response()->json($shelters);
     }
 
@@ -31,7 +31,7 @@ class ShelterController extends Controller
      */
     public function show(string $shelter)
     {
-        $shelter = Shelter::where('id', $shelter)->firstOrFail();
+        $shelter = Shelter::with(['pets'])->where('id', $shelter)->firstOrFail();
         return response()->json($shelter);
     }
 

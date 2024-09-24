@@ -23,4 +23,9 @@ class Pets extends Model
     {
         return $this->hasMany(Photos::class, 'pet_id', 'id');
     }
+
+    public function shelter()
+    {
+        return $this->belongsTo(Shelter::class, 'shelter_id', 'id');
+    }
 }
