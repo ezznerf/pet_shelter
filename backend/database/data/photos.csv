@@ -1,0 +1,4 @@
+pet_id,path,name,size
+6,pets/photos/photo1.jpeg,photo1,120000
+4,pets/photos/photo2.jpeg,photo2,220000
+5,pets/photos/photo3.jpeg,photo3,120321
