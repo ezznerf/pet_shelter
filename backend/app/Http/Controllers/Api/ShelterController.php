@@ -14,7 +14,7 @@ class ShelterController extends Controller
      */
     public function index()
     {
-        $shelters = Shelter::with(['pets.photos'])->get();
+        $shelters = Shelter::with(['pets.photos', 'needs'])->get();
         return response()->json($shelters);
     }
 

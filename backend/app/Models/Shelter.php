@@ -22,6 +22,16 @@ class Shelter extends Model
         return $this->hasMany(Pets::class, 'shelter_id', 'id');
     }
 
+    public function shelter_needs(): HasMany
+    {
+        return $this->hasMany(ShelterNeed::class, 'need_id', 'id');
+    }
+    public function needs()
+    {
+        return $this->hasManyThrough(ShelterNeed::class, Need::class, 'id', 'id', 'id');
+    }
+
+
     public function photos()
     {
         return $this->hasManyThrough(Pets::class, Photos::class, 'pet_id', 'id', 'id');
