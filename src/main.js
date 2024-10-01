@@ -9,13 +9,15 @@ import CardShelterList from './components/Pages/CardShelterList.vue' // Импо
 import ShelterInfo from './components/Pages/ShelterInfo.vue'
 import TakePet from './components/Pages/TakePet.vue'
 import PetList from './components/PetList.vue'
+import PersonalAccount from './components/Pages/PersonalAccount.vue'
 
 const routes = [
   { path: '/one', component: Home },
   { path: '/CardShelterList', component: CardShelterList },
   { path: '/Takepet', component: TakePet },
   { path: '/PetList', component: PetList },
-  { path: '/ShelterInfo/:id', name: 'ShelterInfo', component: ShelterInfo, props: true }
+  { path: '/ShelterInfo/:id', name: 'ShelterInfo', component: ShelterInfo, props: true },
+  { path: '/UserProfile', component: PersonalAccount }
 ]
 
 const router = createRouter({
