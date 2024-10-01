@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('forms', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('shelter_id')->unsigned();
             $table->bigInteger('volunteering_id')->unsigned();
             $table->string('name')->nullable();
@@ -26,8 +25,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('shelter_id')->references('id')->on('shelters')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('volunteering_id')->references('id')->on('volunteerings')->onDelete('cascade');
+            $table->foreign('volunteering_id')->references('id')->on('volunteering')->onDelete('cascade');
 
         });
     }

@@ -67,4 +67,9 @@ class User extends Authenticatable
     {
         return $this->hasManyThrough(Achivment::class, UserAchivment::class, 'user_id', 'id', 'id', 'achivment_id');
     }
+
+    public function user_forms()
+    {
+        return $this->hasManyThrough(Form::class, UserForm::class, 'user_id', 'id', 'id', 'form_id');
+    }
 }

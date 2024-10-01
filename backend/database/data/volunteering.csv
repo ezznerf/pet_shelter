@@ -1,0 +1,2 @@
+type_help_id,shelter_id,type_of_car,distance,duration_of_walk
+1,1,default,12000,null

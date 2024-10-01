@@ -16,10 +16,18 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
 //        $this->call(SheltersTableSeeder::class);
+
 //        $this->call(PetsTableSeeder::class);
 //        $this->call(PhotosTableSeeder::class);
-        $this->call(NeedsTableSeeder::class);
-        $this->call(ShelterNeedsTableSeeder::class);
+
+//        $this->call(NeedsTableSeeder::class);
+//        $this->call(ShelterNeedsTableSeeder::class);
+
+//        $this->call(TypeHelpsSeeder::class);
+//        $this->call(Volunteering::class);
+//        $this->call(FormSeeder::class);
+
+        $this->call(UserFormSeeder::class);
     }
 }
 

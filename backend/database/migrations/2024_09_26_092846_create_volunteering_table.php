@@ -20,7 +20,7 @@ return new class extends Migration
                 $table->integer('duration_of_walk')->nullable();
                 $table->timestamps();
 
-                $table->foreign('type_help_id')->references('id')->on('type_help');
+                $table->foreign('type_help_id')->references('id')->on('type_helps');
                 $table->foreign('shelter_id')->references('id')->on('shelters')->onDelete('cascade');
 
             });
