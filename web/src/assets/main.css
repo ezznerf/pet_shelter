@@ -3,11 +3,10 @@
 @tailwind utilities;
 
 body {
-  background-image: url(src\assets\image\back.png);
+  background-image: url(../assets/image/back3.png);
   background-repeat: no-repeat;
   background-size: contain;
   background-size: cover;
-  background-position: center;
   margin: 0;
   padding: 0;
 }
