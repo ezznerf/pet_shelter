@@ -28,6 +28,10 @@ class DatabaseSeeder extends Seeder
 //        $this->call(FormSeeder::class);
 //
 //        $this->call(UserFormSeeder::class);
+
+//        $this->call(UrgentHelpSeeder::class);
+
+//        $this->call(UrgentHelpPhotoSeeder::class);
     }
 }
 

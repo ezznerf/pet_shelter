@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\ShelterController;
+use App\Http\Controllers\Api\TypeHelpController;
+use App\Http\Controllers\Api\UrgentHelpController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\PetsController;
 use App\Http\Controllers\Api\FormConroller;
@@ -26,3 +28,7 @@ Route::get('pets/{pet}', [PetsController::class, 'show'])->name('api.pets.show')
 Route::get('forms', [FormConroller::class, 'index'])->name('api.forms.show');
 
 Route::get('volunteering', [VolunteeringController::class, 'index'])->name('api.volunteering');
+
+Route::get('type_help', [TypeHelpController::class, 'index'])->name('api.type_help');
+
+Route::get('urgent_help', [UrgentHelpController::class, 'index'])->name('api.urgent_help');
