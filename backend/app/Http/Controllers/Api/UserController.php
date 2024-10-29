@@ -3,15 +3,19 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Notifications\Notifiable;
 
 class UserController extends Controller
 {
-    public function index($user)
+    use Notifiable;
+    public function index()
     {
-        $users = User::with('achivments', 'user_forms')->where('id', '=', $user)->get();
-        return response()->json($users);
+        $user = Auth::user();
+        return UserResource::collection(User::with('achivments', 'user_forms')->where('id', '=', $user->id)->get());
     }
 
     //todo реалтзовать чисто юзера с формами

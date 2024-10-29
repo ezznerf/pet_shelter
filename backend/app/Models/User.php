@@ -9,11 +9,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Achivment;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+
 {
 
 }
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable, HasApiTokens;
 
@@ -26,13 +28,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'email_verified_at',
-        'phone_number',
-        'user_pic_path',
-        'is_active',
-        'role_id',
-        'level',
-        'balance',
+//        'phone_number',
     ];
 
     /**

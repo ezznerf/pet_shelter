@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
 //        $this->call(UrgentHelpSeeder::class);
 
 //        $this->call(UrgentHelpPhotoSeeder::class);
+        $this->call(AchivmentsSeeder::class);
     }
 }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ShelterResource;
 use App\Models\Shelter;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -14,8 +15,7 @@ class ShelterController extends Controller
      */
     public function index()
     {
-        $shelters = Shelter::with(['pets.photos', 'needs'])->get();
-        return response()->json($shelters);
+        return ShelterResource::collection(Shelter::with(['pets.photos', 'needs'])->get());
     }
 
     /**
@@ -31,8 +31,7 @@ class ShelterController extends Controller
      */
     public function show(string $shelter)
     {
-        $shelter = Shelter::with(['pets'])->where('id', $shelter)->firstOrFail();
-        return response()->json($shelter);
+        return ShelterResource::collection(Shelter::with(['pets'])->where('id', $shelter)->first());
     }
 
     /**
