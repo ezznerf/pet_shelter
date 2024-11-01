@@ -2,9 +2,10 @@
 
 namespace App\Http\Resources;
 
+
+use App\Models\ShelterNeed;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Routing\Route;
 
 class ShelterResource extends JsonResource
 {
@@ -23,7 +24,8 @@ class ShelterResource extends JsonResource
             'phoneNumber' => $this->phone_number,
             'description' => $this->description,
             'email' => $this->email,
-
+            'needs' => NeedResource::collection($this->whenLoaded('needs')),
+            'shelter_need' => ShelterNeedsResource::collection($this->whenLoaded('shelter_needs')),
         ];
     }
 }

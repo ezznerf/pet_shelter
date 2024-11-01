@@ -26,7 +26,7 @@ Route::post('register', [AuthController::class, 'register'])->name('api.register
 Route::post('login', [AuthController::class, 'login'])->name('login');
 
 Route::get('/email/verify/{id}/{hash}', [VerifyEmailController::class, 'anime'])->name('verification.verify');
-Route::middleware('')->group(function () { //auth:sanctum
+//Route::middleware('')->group(function () { //auth:sanctum
     Route::get('shelters', [ShelterController::class, 'index'])->name('api.shelters');
     Route::get('shelters/{shelter}', [ShelterController::class, 'show'])->name('api.shelters.show');
 
@@ -49,4 +49,4 @@ Route::middleware('')->group(function () { //auth:sanctum
 
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
-});
+//});

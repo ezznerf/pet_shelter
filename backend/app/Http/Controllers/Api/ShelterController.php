@@ -15,7 +15,7 @@ class ShelterController extends Controller
      */
     public function index()
     {
-        return ShelterResource::collection(Shelter::with(['pets.photos', 'needs'])->get());
+        return Shelter::with(['pets.photos', 'needs'])->get();
     }
 
     /**
@@ -31,7 +31,7 @@ class ShelterController extends Controller
      */
     public function show(string $shelter)
     {
-        return ShelterResource::collection(Shelter::with(['pets'])->where('id', $shelter)->first());
+        return Shelter::with(['pets.photos', 'needs'])->where('id', $shelter)->first();
     }
 
     /**

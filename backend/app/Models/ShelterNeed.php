@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ShelterNeed extends Model
@@ -11,12 +12,15 @@ class ShelterNeed extends Model
     use HasFactory;
 
     protected $fillable = [
-        'need_id',
+        'shelter_id',
         'count',
         'brand',
+        'need',
+        'unit'
         ];
 
-    public function needs(): HasMany {
-        return $this->hasMany(Need::class, 'need_id', 'id');
+    public function shelter(): BelongsTo
+    {
+        return $this->belongsTo(Shelter::class, 'shelter_id', 'id');
     }
 }

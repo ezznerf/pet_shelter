@@ -18,4 +18,9 @@ class Need extends Model
     {
         return $this->belongsTo(ShelterNeed::class, 'need_id', 'id');
     }
+
+    public function shelters()
+    {
+        return $this->hasMany(ShelterNeed::class, 'need_id', 'id');
+    }
 }
