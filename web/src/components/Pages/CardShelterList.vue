@@ -1,19 +1,19 @@
 <script setup>
-import { onMounted, ref } from 'vue'
-import axios from 'axios'
-import CardShelter from '../../CardShelter.vue'
+import { onMounted, ref } from 'vue';
+import axios from 'axios';
+import CardShelter from '../../CardShelter.vue';
 
-const items = ref([]) 
+const items = ref([]);
 
 onMounted(async () => {
   try {
-    const { data } = await axios.get('https://3d7f9dd34af77338.mokky.dev/item')
-    console.log('Response data:', data)
-    items.value = data
+    const { data } = await axios.get('http://127.0.0.1:8000/api/shelters');
+    items.value = data;
+    console.log('Response data:', data);
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
-})
+});
 </script>
 
 <template>
@@ -22,7 +22,7 @@ onMounted(async () => {
       v-for="item in items"
       :key="item.id"
       :id="item.id"
-      :imgUrl="item.imgUrl"
+      :path="item.path"
       :name="item.name"
       :description="item.description"
       :location="item.location"
@@ -30,7 +30,7 @@ onMounted(async () => {
       :unit="item.unit"
       :count="item.count"
       :brand="item.brand"
-      :phone_number="item.phone_number"
+      :phone_number="item.phone_number" 
     />
   </div>
 </template>

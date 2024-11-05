@@ -1,3 +1,48 @@
+<script setup>
+import Carousel from '@/components/Carousel.vue';
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
+
+const items = ref([]);
+const shelters = ref([]);
+
+onMounted(async () => {
+  try {
+    const petsResponse = await axios.get('http://127.0.0.1:8000/api/pets');
+    items.value = petsResponse.data;
+
+    const sheltersResponse = await axios.get('http://127.0.0.1:8000/api/shelters');
+    shelters.value = sheltersResponse.data;
+
+    const shelterMap = Object.fromEntries(
+      shelters.value.map(shelter => [shelter.id, shelter.phone_number])
+    );
+
+    items.value = items.value.map(item => ({
+      ...item,
+      phone_number: shelterMap[item.shelter_id], 
+      path: item.photos?.[0]?.path || '' 
+    }));
+  } catch (err) {
+    console.error(err);
+    alert('Ошибка загрузки данных. Пожалуйста, попробуйте позже.');
+  }
+});
+</script>
+
+<style scoped>
+.info {
+  padding: 5%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.medal {
+  margin-left: 20%;
+  margin-top: 13%;
+}
+</style>
+
 <template>
   <div class="page">
     <div class="medal relative ">
@@ -20,57 +65,8 @@
       </div>
       <div class="border-4 border-slate-950 border-slate-500 rounded-3xl p-8 w-64 bg-white text-center shadow-2xl">
         <b>649,156</b>
-        <p>Мы собрали</p>
+        <p>Помогли приютам</p>
       </div>
-    </div> 
-  </div>
-  <div v-footer class="bg-neutral-500">
-      <p class="text-center">
-        Наша задача, это разными схемами сделать этот великий проект
-      </p>
-      <p class="text-center">Величайшие: Якута Кирилл, Масык Илья, Скрипоченко Сергей, Васюнин Антон</p>
     </div>
+  </div>
 </template>
-
-<script setup>
-import Carousel from '@/components/Carousel.vue'
-import { ref, onMounted } from 'vue'
-import axios from 'axios'
-import { useRoute } from 'vue-router';
-
-const items = ref([]);
-
-
-
-onMounted(async () => {
-  try {
-    const { data } = await axios.get('https://3d7f9dd34af77338.mokky.dev/pets');
-    items.value = data;
-  } catch (err) {
-    console.log(err);
-  }
-});
-</script>
-
-<style>
-
-.page {
-  background-image: url('/Image/back3.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: top;
-  flex-grow: 1;
-}
-
-
-.info {
-  padding: 5%;
-  padding-left: 10%;
-  padding-right: 10%;
-}
-
-.medal {
-  margin-left: 20%;
-  margin-top: 13%;
-}
-</style>

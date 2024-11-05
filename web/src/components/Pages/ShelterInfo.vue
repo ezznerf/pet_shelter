@@ -9,8 +9,9 @@ const shelter = ref(null)
 onMounted(async () => {
   const shelterId = route.params.id
   try {
-    const { data } = await axios.get(`https://3d7f9dd34af77338.mokky.dev/item/${shelterId}`)
-    shelter.value = data
+    const { data } = await axios.get(`http://127.0.0.1:8000/api/shelters`)
+    shelter.value = data.find(s => s.id === Number(shelterId))
+    console.log(shelter.value); 
   } catch (error) {
     console.error(error)
   }
@@ -33,14 +34,9 @@ p {
 </style>
 
 <template>
-  <div class="text-center "> 
+  <div class="text-center">
     <div v-if="shelter">
-      <p class="text-3xl mt-6">{{ shelter.name }}</p>
-      <img
-        :src="shelter.imgUrl"
-        alt="Shelter Image"
-        class="w-96 h-96 object-cover mx-auto mt-8 mb-5 flex rounded-3xl"
-      />
+      <h1 class="text-3xl mt-6">{{ shelter.name }}</h1>
       
       <div class="mx-8 mt-6 card-background border border-slate-100">
         <p class="m-4 text-2xl" style="text-indent: 1.5rem">{{ shelter.description }}</p>
@@ -48,13 +44,23 @@ p {
 
       <div class="flex justify-around flex-wrap">
         <div class="flex-1 m-8 card-background border border-slate-100">
-          <p class="m-4 text-2xl">Приют находится по адресу: {{ shelter.location }}</p>
-          <p class="m-4 text-2xl">Требуется: {{ shelter.need }} {{ shelter.brand }} {{ shelter.count }} {{ shelter.unit }}</p>
+          <p class="m-4 text-2xl">Адрес: {{ shelter.location }}</p>
+          <div v-if="shelter.needs && shelter.needs.length > 0">
+            <ul class="ml-6">
+              <li v-for="need in shelter.needs" :key="need.id" class="text-2xl mb-2">
+                <p class="m-4 text-2xl">Потребности: {{ need.count }} {{ need.brand }}</p>
+                
+              </li>
+            </ul>
+          </div>
+          <div v-else>
+            <p class="m-4 text-xl">Нет потребностей.</p>
+          </div>
         </div>
 
         <div class="flex-1 m-8 card-background border border-slate-50">
-          <p class="m-4 text-2xl">Номер телефона: +{{ shelter.phone_number }}</p>
-          <p class="m-4 text-2xl">Эллектронная почта :</p>
+          <p class="m-4 text-2xl">Телефон: {{ shelter.phone_number }}</p>
+          <p class="m-4 text-2xl">Email: {{ shelter.email }}</p>
         </div>
       </div>
     </div>

@@ -16,10 +16,21 @@ export default {
     }
   },
   methods: {
-    close() {
-      this.$emit('close');
+  goToShelter() {
+    console.log('petInfo:', this.petInfo); 
+    const shelterId = this.petInfo.shelterId;
+    if (shelterId) {
+      console.log('Navigating to shelter with ID:', shelterId);
+      this.$router.push({ name: 'ShelterInfo', params: { id: shelterId } });
+    } else {
+      console.error('ID приюта отсутствует');
     }
+  },
+  close() {
+    this.$emit('close'); 
   }
+}
+
 }
 </script>
 
@@ -57,6 +68,10 @@ export default {
   background-color: white;
 }
 
+.bottom-button:hover {
+  background-color: #f0f0f0; 
+  cursor: pointer; 
+}
 </style>
 
 <template>
@@ -66,11 +81,11 @@ export default {
       <div class="text-left mt-5 ml-5">
         <b>{{ petInfo.breed }}: {{ petInfo.name }}</b>  
         <p>Возраст: {{ petInfo.age }}</p>
-        <p>Пол: {{ petInfo.pol }}</p>
+        <p>Пол: {{ petInfo.gender }}</p>
         <p>Описание: {{ petInfo.description }}</p>
-        <p>Номер телефона: {{ petInfo.phone }}</p>
-        <div class="mt-10 ml-28 hover:-translate-y-1 transition">
-          <button class="bottom-button">Приют</button>
+        <p>Номер телефона: {{ petInfo.phone_number }}</p>
+        <div class="mt-10 ml-28 hover:-translate-y-1">
+          <button class="bottom-button" @click="goToShelter">Приют</button>
         </div>
       </div>
     </div>

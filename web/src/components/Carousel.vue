@@ -27,9 +27,8 @@ export default defineComponent({
   },
   methods: {
     openModal(item) {
-      this.selectedImage = item.imgUrl;
-      this.selectedPetInfo = item;
-      this.selectedShelterInfo = item;
+      this.selectedImage = item.path;
+      this.selectedPetInfo = item; 
       this.isModalVisible = true;
     },
     closeModal() {
@@ -41,7 +40,32 @@ export default defineComponent({
 })
 </script>
 
-<style>
+<template>
+  <div>
+    <div class="flex flex-col">
+      <b class="text-center text-4xl py-4">Нужна твоя помощь</b>
+    </div>
+    <Carousel :items-to-show="3" 
+      :wrap-around="true"
+      :snap-align="'center'" 
+      :transition="400" 
+      :mouse-drag="true"  
+      class="container">
+        <Slide v-for="item in items" :key="item.id">
+          <div class="carousel__item" @click="openModal(item)">
+            <img :src="item.path" alt="Image" class="hover:-translate-y-2"/>
+          </div>
+        </Slide>
+        <template #addons>
+          <Navigation />
+        </template>
+    </Carousel>
+
+    <Popup :isVisible="isModalVisible" :image="selectedImage" :petInfo="selectedPetInfo" @close="closeModal" />
+  </div>
+</template>
+
+<style scoped>
 .container {
   position: relative;
   margin: auto;
@@ -83,27 +107,3 @@ export default defineComponent({
   right: 2%;
 }
 </style>
-<template>
-  <div>
-    <div class="flex flex-col">
-      <b class="text-center text-4xl py-4">Нужна твоя помощь</b>
-    </div>
-    <Carousel :items-to-show="3" 
-      :wrap-around="true"
-      :snap-align="'center'" 
-      :transition="400" 
-      :mouse-drag="true"  
-      class="container">
-        <Slide v-for="item in items" :key="item.id">
-          <div class="carousel__item" @click="openModal(item)">
-            <img :src="item.imgUrl" alt="Image" class="hover:-translate-y-2 "/>
-          </div>
-        </Slide>
-        <template #addons>
-          <Navigation />
-        </template>
-    </Carousel>
-
-    <Popup :isVisible="isModalVisible" :image="selectedImage" :petInfo="selectedPetInfo " @close="closeModal" />
-  </div>
-</template>

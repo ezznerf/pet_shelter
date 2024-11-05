@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: 'Modal',
+  name: 'Popup',
   props: {
     isVisible: {
       type: Boolean,
@@ -18,12 +18,37 @@ export default {
   methods: {
     close() {
       this.$emit('close');
+    },
+    goToShelter() {
+      if (this.petInfo.shelter_id) {
+        this.$router.push({ name: 'ShelterInfo', params: { id: this.petInfo.shelter_id } });
+      } else {
+        console.error('Существующий id приюта не найден.');
+      }
     }
   }
 }
 </script>
 
-<style>
+<template>
+  <div v-if="isVisible" class="modal-overlay" @click="close">
+    <div class="modal-content" @click.stop>
+      <img :src="image" alt="Modal Image" /> 
+      <div class="text-center ml-16 mt-7">
+        <b>{{ petInfo.breed }}: {{ petInfo.name }}</b>
+        <p>Возраст: {{ petInfo.age }}</p>
+        <p>Пол: {{ petInfo.gender }}</p>
+        <p>Номер телефона: </p>
+        <p>{{ petInfo.phone_number }}</p>
+        <div class="mt-9 hover:-translate-y-1">
+          <button class="bottom-button" @click="goToShelter">Приют</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped>
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -43,37 +68,19 @@ export default {
   width: 500px;
   height: 300px;
   overflow: hidden;
-  
+  border-radius: 12px;
 }
 
 .modal-content img {
   width: 50%;
   height: 100%;
+  border-radius: 12px 0 0 12px;
 }
 
 .bottom-button {
-  padding: 10px 20px; 
-  border: 2px solid black; 
-  border-radius: 10px; 
-  background-color: white; 
- 
+  padding: 10px 20px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: white;
 }
 </style>
-
-<template>
-  <div v-if="isVisible" class="modal-overlay" @click="close">
-    <div class="modal-content rounded-3xl flex " @click.stop>
-      <img :src="image" alt="Modal Image" class="rounded-3xl "/> 
-      <div class="text-center ml-16 mt-7">
-        <b>{{ petInfo.breed }}: {{ petInfo.name }}</b>
-        <p>Возраст: {{ petInfo.age }}</p>
-        <p>Пол: {{ petInfo.pol }}</p>
-        <p>Номер телефона: {{  }}</p>
-        <div class="mt-9 hover:-translate-y-1 transition">
-          <button class="bottom-button"> Приют</button>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-</template>
