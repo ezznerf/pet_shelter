@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-image: url(../Image/back.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('@/assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900; 
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'VAG World Bold';
+  src: url('@/assets/fonts/Vag/vag_world_bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+b {
+  font-family: 'VAG World Bold', sans-serif;
+  font-weight: bold;
+}
+
+h1 {
+  font-family: 'VAG World Bold', sans-serif;
+  font-weight: bold;
+}
+
+option{
+  font-family: 'VAG World Bold', sans-serif;
+  font-weight: bold;
+}
+
+
+p{
+  font-family: 'Montserrat', sans-serif;
+}
+

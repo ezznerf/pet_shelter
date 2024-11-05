@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "target": "ES6", 
+    "lib": ["ES6", "DOM"], 
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}
