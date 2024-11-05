@@ -5,7 +5,7 @@ import TakePet from './Pages/TakePet.vue'
 
 const items = ref([])
 const selectedPol = ref('')
-const selectedTyp = ref('')
+const selectedBreed = ref('')
 
 onMounted(async () => {
   try {
@@ -20,17 +20,18 @@ onMounted(async () => {
 const filteredItems = computed(() => {
   return items.value.filter((item) => {
     const matchesPol = selectedPol.value ? item.pol === selectedPol.value : true
-    const matchesTyp = selectedTyp.value
-      ? selectedTyp.value === 'Кошка'
-        ? ['Кошка', 'Кот'].includes(item.type)
-        : item.type === selectedTyp.value
+    const matchesBreed = selectedBreed.value
+      ? selectedBreed.value === 'Кошка'
+        ? ['Кошка', 'Кот'].includes(item.breed)
+        : item.breed === selectedBreed.value
       : true
-    return matchesPol && matchesTyp
+    return matchesPol && matchesBreed 
   })
 })
 </script>
 
 <template>
+  <div>
   <div class="p-6">
     <div class="flex justify-between items-center">
       <h1 class="text-3xl font-bold md-8">Эти ребята ищут себе дом</h1>
@@ -46,8 +47,8 @@ const filteredItems = computed(() => {
         </div>
 
         <div class="flex items-center">
-          <label for="typeFilter" class="mr-2">Тип:</label>
-          <select id="typeFilter" v-model="selectedTyp" class="border rounded-lg p-2">
+          <label for="breedFilter" class="mr-2">Тип:</label>
+          <select id="breedFilter" v-model="selectedBreed" class="border rounded-lg p-2">
             <option value="">Все</option>
             <option value="Кошка">Кошки</option>
             <option value="Собака">Собаки</option>
@@ -62,12 +63,13 @@ const filteredItems = computed(() => {
       v-for="item in filteredItems"
       :key="item.id"
       :id="item.id"
+      :breed="item.breed"
       :name="item.name"
       :age="item.age"
-      :imgUrl="item.imgUrl"
-      :text="item.text"
       :pol="item.pol"
-      :type="item.type"
+      :description="item.description"
+      :imgUrl="item.imgUrl"
     />
   </div>
+</div>
 </template>

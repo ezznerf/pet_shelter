@@ -23,7 +23,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -40,39 +40,38 @@ export default {
   background: white;
   display: flex;
   padding: 20px;
-  width: 500px;
-  height: 300px;
+  width: 700px;
+  height: 400px;
   overflow: hidden;
-  
 }
 
 .modal-content img {
-  width: 50%;
+  width: 40%;
   height: 100%;
 }
 
 .bottom-button {
-  padding: 10px 20px; 
-  border: 2px solid black; 
-  border-radius: 10px; 
-  background-color: white; 
- 
+  padding: 10px 30px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: white;
 }
+
 </style>
 
 <template>
   <div v-if="isVisible" class="modal-overlay" @click="close">
-    <div class="modal-content rounded-3xl flex " @click.stop>
-      <img :src="image" alt="Modal Image" class="rounded-3xl "/> 
-      <div class="text-center ml-16 mt-7">
-        <b>{{ petInfo.breed }}: {{ petInfo.name }}</b>
+    <div class="modal-content rounded-3xl flex" @click.stop>
+      <img :src="image" alt="Modal Image" class="rounded-3xl" style="flex-shrink: 0" />
+      <div class="text-left mt-5 ml-5">
+        <b>{{ petInfo.breed }}: {{ petInfo.name }}</b>  
         <p>Возраст: {{ petInfo.age }}</p>
         <p>Пол: {{ petInfo.pol }}</p>
-        <p>Номер телефона: {{  }}</p>
-        <div class="mt-9 hover:-translate-y-1 transition">
-          <button class="bottom-button"> Приют</button>
+        <p>Описание: {{ petInfo.description }}</p>
+        <p>Номер телефона: {{ petInfo.phone }}</p>
+        <div class="mt-10 ml-28 hover:-translate-y-1 transition">
+          <button class="bottom-button">Приют</button>
         </div>
-        
       </div>
     </div>
   </div>
