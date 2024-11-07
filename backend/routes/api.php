@@ -31,6 +31,7 @@ Route::get('/email/verify/{id}/{hash}', [VerifyEmailController::class, 'anime'])
     Route::get('shelters/{shelter}', [ShelterController::class, 'show'])->name('api.shelters.show');
 
     Route::get('user', [UserController::class, 'index'])->name('api.user');
+    Route::get('users/{user}', [UserController::class, 'show'])->name('api.user');
 
     Route::get('pets', [PetsController::class, 'index'])->name('api.pets');
     Route::get('pets/{pet}', [PetsController::class, 'show'])->name('api.pets.show');
