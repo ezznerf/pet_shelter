@@ -31,6 +31,14 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+
+.page {
+  background-image: url('/Image/back3.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  flex-grow: 1;
+}
 .info {
   padding: 5%;
   padding-left: 10%;
