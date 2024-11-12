@@ -14,8 +14,7 @@ class UserController extends Controller
     use Notifiable;
     public function index()
     {
-        $user = Auth::user();
-        return UserResource::collection(User::with('achivments', 'user_forms')->where('id', '=', $user->id)->get());
+        return User::with('achivments', 'user_forms')->get();
     }
     public function show($user)
     {
