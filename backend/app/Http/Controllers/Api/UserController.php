@@ -17,6 +17,10 @@ class UserController extends Controller
         $user = Auth::user();
         return UserResource::collection(User::with('achivments', 'user_forms')->where('id', '=', $user->id)->get());
     }
+    public function show($user)
+    {
+        return User::with('achivments', 'user_forms')->where('id', '=', $user)->firstOrFail();
+    }
 
     //todo реалтзовать чисто юзера с формами
     public function userForms($user)

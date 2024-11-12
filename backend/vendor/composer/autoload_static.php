@@ -534,6 +534,8 @@ class ComposerStaticInite1ecb198cbeb5674b7c199b1546c40b2
         'App\\Http\\Requests\\UpdateFormRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateFormRequest.php',
         'App\\Http\\Resources\\AchivmentResource' => __DIR__ . '/../..' . '/app/Http/Resources/AchivmentResource.php',
         'App\\Http\\Resources\\FormResource' => __DIR__ . '/../..' . '/app/Http/Resources/FormResource.php',
+        'App\\Http\\Resources\\NeedResource' => __DIR__ . '/../..' . '/app/Http/Resources/NeedResource.php',
+        'App\\Http\\Resources\\ShelterNeedsResource' => __DIR__ . '/../..' . '/app/Http/Resources/ShelterNeedsResource.php',
         'App\\Http\\Resources\\ShelterResource' => __DIR__ . '/../..' . '/app/Http/Resources/ShelterResource.php',
         'App\\Http\\Resources\\UserFormResource' => __DIR__ . '/../..' . '/app/Http/Resources/UserFormResource.php',
         'App\\Http\\Resources\\UserResource' => __DIR__ . '/../..' . '/app/Http/Resources/UserResource.php',

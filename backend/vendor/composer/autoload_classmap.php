@@ -27,6 +27,8 @@ return array(
     'App\\Http\\Requests\\UpdateFormRequest' => $baseDir . '/app/Http/Requests/UpdateFormRequest.php',
     'App\\Http\\Resources\\AchivmentResource' => $baseDir . '/app/Http/Resources/AchivmentResource.php',
     'App\\Http\\Resources\\FormResource' => $baseDir . '/app/Http/Resources/FormResource.php',
+    'App\\Http\\Resources\\NeedResource' => $baseDir . '/app/Http/Resources/NeedResource.php',
+    'App\\Http\\Resources\\ShelterNeedsResource' => $baseDir . '/app/Http/Resources/ShelterNeedsResource.php',
     'App\\Http\\Resources\\ShelterResource' => $baseDir . '/app/Http/Resources/ShelterResource.php',
     'App\\Http\\Resources\\UserFormResource' => $baseDir . '/app/Http/Resources/UserFormResource.php',
     'App\\Http\\Resources\\UserResource' => $baseDir . '/app/Http/Resources/UserResource.php',

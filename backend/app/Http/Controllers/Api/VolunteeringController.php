@@ -10,6 +10,6 @@ class VolunteeringController extends Controller
 {
     public function index()
     {
-        return Volunteering::with(['type_help', 'shelter'])->get();
+        return Volunteering::all();
     }
 }
