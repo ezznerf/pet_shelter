@@ -10,10 +10,10 @@ const selectedBreed = ref('');
 
 onMounted(async () => {
   try {
-    const petsResponse = await axios.get('http://127.0.0.1:8000/api/pets');
+    const petsResponse = await axios.get('http://127.0.0.1:80/api/pets');
     items.value = petsResponse.data;
 
-    const sheltersResponse = await axios.get('http://127.0.0.1:8000/api/shelters');
+    const sheltersResponse = await axios.get('http://127.0.0.1:80/api/shelters');
     shelters.value = sheltersResponse.data;
 
     const shelterMap = Object.fromEntries(

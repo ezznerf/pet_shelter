@@ -7,7 +7,7 @@ const items = ref([]);
 
 onMounted(async () => {
   try {
-    const { data } = await axios.get('http://127.0.0.1:8000/api/shelters');
+    const { data } = await axios.get('http://127.0.0.1:80/api/shelters');
     items.value = data;
     console.log('Response data:', data);
   } catch (err) {

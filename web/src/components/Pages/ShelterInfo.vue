@@ -9,7 +9,7 @@ const shelter = ref(null)
 onMounted(async () => {
   const shelterId = route.params.id
   try {
-    const { data } = await axios.get(`http://127.0.0.1:8000/api/shelters`)
+    const { data } = await axios.get(`http://127.0.0.1:80/api/shelters`)
     shelter.value = data.find(s => s.id === Number(shelterId))
     console.log(shelter.value); 
   } catch (error) {
